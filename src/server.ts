@@ -43,16 +43,6 @@ app.post("/webhook", (req, res) => {
     let body = req.body;
     console.log(JSON.stringify(body));
 
-    if (body.object === "page") {
-      body.entry.forEach(function (entry) {
-        let webhook_event = entry.messaging[0];
-        console.log(webhook_event);
-      });
-      res.status(200).send("EVENT_RECEIVED");
-    } else {
-      res.sendStatus(404);
-    }
-
     return res.status(200).json({ message: "success", webhook: req.body });
   } catch (err) {
     return res.status(400).json({ message: "error", webhook: req.body });
