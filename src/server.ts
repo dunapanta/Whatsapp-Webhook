@@ -32,6 +32,7 @@ app.get("/webhook", (req, res) => {
         return res.sendStatus(403);
       }
     }
+    return res.status(200).json({ message: "Get webook success"});
   } catch (err) {
     return res.status(400).json({ message: "error", webhook: req.body });
   }
